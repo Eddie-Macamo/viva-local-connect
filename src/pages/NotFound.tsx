@@ -32,10 +32,10 @@ const NotFound = () => {
             A página que você está procurando não existe ou foi removida.
           </p>
           <div className="flex justify-center gap-4">
-            <Button variant="gradient" as="a" href="/">
+            <Button variant="gradient" href="/">
               Voltar à página inicial
             </Button>
-            <Button variant="outline" as="a" href="/marketplace">
+            <Button variant="outline" href="/marketplace">
               Ver serviços
             </Button>
           </div>

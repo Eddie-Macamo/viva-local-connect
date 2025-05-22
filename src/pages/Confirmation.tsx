@@ -77,10 +77,10 @@ const Confirmation = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button variant="default" as="a" href="/marketplace">
+                  <Button variant="default" href="/marketplace">
                     Ver serviços disponíveis
                   </Button>
-                  <Button variant="outline" as="a" href="/">
+                  <Button variant="outline" href="/">
                     <ArrowLeft className="mr-2 h-5 w-5" />
                     Voltar para a página inicial
                   </Button>
@@ -123,10 +123,10 @@ const Confirmation = () => {
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button variant="default" as="a" href="/marketplace">
+                    <Button variant="default" href="/marketplace">
                       Ver serviços disponíveis
                     </Button>
-                    <Button variant="outline" as="a" href="/">
+                    <Button variant="outline" href="/">
                       <ArrowLeft className="mr-2 h-5 w-5" />
                       Voltar para a página inicial
                     </Button>

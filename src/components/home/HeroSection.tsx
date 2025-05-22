@@ -24,11 +24,11 @@ export function HeroSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{animationDelay: "400ms"}}>
-            <Button variant="gradient" size="lg" as={Link} to="/register" className="group">
+            <Button variant="gradient" size="lg" to="/register" className="group">
               Cadastrar Meu Negócio
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button variant="outline" size="lg" as={Link} to="/marketplace" className="text-white border-white hover:bg-white/10">
+            <Button variant="outline" size="lg" to="/marketplace" className="text-white border-white hover:bg-white/10">
               Encontrar Serviços
             </Button>
           </div>

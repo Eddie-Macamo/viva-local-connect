@@ -34,7 +34,7 @@ export function Header() {
           <Link to="/admin/login" className="font-medium hover:text-divulgaja-blue transition-colors">
             Painel Admin
           </Link>
-          <Button variant="gradient" as={Link} to="/register">
+          <Button variant="gradient" to="/register">
             Anunciar Agora
           </Button>
         </nav>
@@ -64,8 +64,8 @@ export function Header() {
           <Link to="/admin/login" className="p-2 hover:bg-gray-50 rounded-md" onClick={() => setIsOpen(false)}>
             Painel Admin
           </Link>
-          <Button variant="gradient" fullWidth onClick={() => setIsOpen(false)}>
-            <Link to="/register" className="w-full">Anunciar Agora</Link>
+          <Button variant="gradient" fullWidth onClick={() => setIsOpen(false)} to="/register">
+            Anunciar Agora
           </Button>
         </nav>
       </div>
