@@ -10,6 +10,8 @@ import Marketplace from "./pages/Marketplace";
 import RegisterService from "./pages/RegisterService";
 import ServiceDetail from "./pages/ServiceDetail";
 import Confirmation from "./pages/Confirmation";
+import Auth from "./pages/Auth";
+import Subscription from "./pages/Subscription";
 import Login from "./pages/admin/Login";
 import Dashboard from "./pages/admin/Dashboard";
 
@@ -24,6 +26,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/subscription" element={<Subscription />} />
           <Route path="/register" element={<RegisterService />} />
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="/confirmation" element={<Confirmation />} />

@@ -17,31 +17,31 @@ export function Header() {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="font-heading text-2xl font-bold">
+          <span className="font-heading text-xl md:text-2xl font-bold">
             <span className="text-divulgaja-blue">Divulga</span>
             <span className="text-divulgaja-purple">Já</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/marketplace" className="font-medium hover:text-divulgaja-blue transition-colors">
+        <nav className="hidden lg:flex items-center space-x-6">
+          <Link to="/marketplace" className="font-medium hover:text-divulgaja-blue transition-colors text-sm">
             Buscar Serviços
           </Link>
-          <Link to="/register" className="font-medium hover:text-divulgaja-blue transition-colors">
-            Cadastrar
+          <Link to="/auth" className="font-medium hover:text-divulgaja-blue transition-colors text-sm">
+            Entrar/Cadastrar
           </Link>
-          <Link to="/admin/login" className="font-medium hover:text-divulgaja-blue transition-colors">
+          <Link to="/admin/login" className="font-medium hover:text-divulgaja-blue transition-colors text-sm">
             Painel Admin
           </Link>
-          <Button variant="gradient" to="/register">
+          <Button variant="gradient" to="/auth" className="text-sm">
             Anunciar Agora
           </Button>
         </nav>
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2 focus:outline-none" 
+          className="lg:hidden p-2 focus:outline-none" 
           onClick={toggleMenu}
           aria-label="Menu"
         >
@@ -51,20 +51,38 @@ export function Header() {
 
       {/* Mobile Navigation */}
       <div className={cn(
-        "md:hidden absolute left-0 right-0 bg-white border-b shadow-lg transition-all duration-300 ease-in-out z-30",
-        isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0 invisible"
+        "lg:hidden absolute left-0 right-0 bg-white border-b shadow-lg transition-all duration-300 ease-in-out z-30",
+        isOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0 invisible"
       )}>
         <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-          <Link to="/marketplace" className="p-2 hover:bg-gray-50 rounded-md" onClick={() => setIsOpen(false)}>
+          <Link 
+            to="/marketplace" 
+            className="p-3 hover:bg-gray-50 rounded-md text-center" 
+            onClick={() => setIsOpen(false)}
+          >
             Buscar Serviços
           </Link>
-          <Link to="/register" className="p-2 hover:bg-gray-50 rounded-md" onClick={() => setIsOpen(false)}>
-            Cadastrar
+          <Link 
+            to="/auth" 
+            className="p-3 hover:bg-gray-50 rounded-md text-center" 
+            onClick={() => setIsOpen(false)}
+          >
+            Entrar/Cadastrar
           </Link>
-          <Link to="/admin/login" className="p-2 hover:bg-gray-50 rounded-md" onClick={() => setIsOpen(false)}>
+          <Link 
+            to="/admin/login" 
+            className="p-3 hover:bg-gray-50 rounded-md text-center" 
+            onClick={() => setIsOpen(false)}
+          >
             Painel Admin
           </Link>
-          <Button variant="gradient" fullWidth onClick={() => setIsOpen(false)} to="/register">
+          <Button 
+            variant="gradient" 
+            fullWidth 
+            onClick={() => setIsOpen(false)} 
+            to="/auth"
+            className="py-3"
+          >
             Anunciar Agora
           </Button>
         </nav>
