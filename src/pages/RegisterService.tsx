@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
@@ -6,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/shared/Button";
 import { WhatsappButton } from "@/components/shared/WhatsappButton";
 import { Upload, Check, X } from "lucide-react";
-import { categories } from "@/lib/data";
+import { categories, provinces } from "@/lib/data";
 import { ServiceFormData } from "@/lib/types";
 
 const RegisterService = () => {
@@ -15,6 +14,7 @@ const RegisterService = () => {
     name: "",
     description: "",
     category: "",
+    province: "",
     location: "",
     whatsapp: "",
     images: [],
@@ -23,6 +23,10 @@ const RegisterService = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [imagePreview, setImagePreview] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Get districts for selected province
+  const selectedProvince = provinces.find(p => p.name === formData.province);
+  const districts = selectedProvince ? selectedProvince.districts : [];
 
   // Atualizar o estado do formulário
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -110,6 +114,10 @@ const RegisterService = () => {
     
     if (!formData.category) {
       newErrors.category = "Selecione uma categoria";
+    }
+    
+    if (!formData.province) {
+      newErrors.province = "Selecione uma província";
     }
     
     if (!formData.location.trim()) {
@@ -233,22 +241,66 @@ const RegisterService = () => {
                   {errors.category && <p className="mt-1 text-sm text-red-500">{errors.category}</p>}
                 </div>
                 
+                {/* Província */}
+                <div>
+                  <label htmlFor="province" className="block text-sm font-medium mb-1">
+                    Província*
+                  </label>
+                  <select
+                    id="province"
+                    name="province"
+                    value={formData.province}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-2 rounded-lg border ${
+                      errors.province ? "border-red-500" : "border-gray-300"
+                    } focus:ring-2 focus:ring-divulgaja-purple focus:border-divulgaja-purple`}
+                  >
+                    <option value="">Selecione uma província</option>
+                    {provinces.map((province) => (
+                      <option key={province.id} value={province.name}>
+                        {province.name}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.province && <p className="mt-1 text-sm text-red-500">{errors.province}</p>}
+                </div>
+                
                 {/* Localização */}
                 <div>
                   <label htmlFor="location" className="block text-sm font-medium mb-1">
-                    Bairro/Localização*
+                    Distrito/Bairro*
                   </label>
-                  <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    value={formData.location}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-2 rounded-lg border ${
-                      errors.location ? "border-red-500" : "border-gray-300"
-                    } focus:ring-2 focus:ring-divulgaja-purple focus:border-divulgaja-purple`}
-                    placeholder="Ex: Centro"
-                  />
+                  {formData.province ? (
+                    <select
+                      id="location"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-2 rounded-lg border ${
+                        errors.location ? "border-red-500" : "border-gray-300"
+                      } focus:ring-2 focus:ring-divulgaja-purple focus:border-divulgaja-purple`}
+                    >
+                      <option value="">Selecione um distrito</option>
+                      {districts.map((district) => (
+                        <option key={district} value={district}>
+                          {district}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      type="text"
+                      id="location"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-2 rounded-lg border ${
+                        errors.location ? "border-red-500" : "border-gray-300"
+                      } focus:ring-2 focus:ring-divulgaja-purple focus:border-divulgaja-purple`}
+                      placeholder="Primeiro selecione uma província"
+                      disabled
+                    />
+                  )}
                   {errors.location && <p className="mt-1 text-sm text-red-500">{errors.location}</p>}
                 </div>
                 
