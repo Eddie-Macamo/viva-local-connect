@@ -31,9 +31,6 @@ export function Header() {
           <Link to="/auth" className="font-medium hover:text-divulgaja-blue transition-colors text-sm">
             Entrar/Cadastrar
           </Link>
-          <Link to="/admin/login" className="font-medium hover:text-divulgaja-blue transition-colors text-sm">
-            Painel Admin
-          </Link>
           <Button variant="gradient" to="/auth" className="text-sm">
             Anunciar Agora
           </Button>
@@ -68,13 +65,6 @@ export function Header() {
             onClick={() => setIsOpen(false)}
           >
             Entrar/Cadastrar
-          </Link>
-          <Link 
-            to="/admin/login" 
-            className="p-3 hover:bg-gray-50 rounded-md text-center" 
-            onClick={() => setIsOpen(false)}
-          >
-            Painel Admin
           </Link>
           <Button 
             variant="gradient" 

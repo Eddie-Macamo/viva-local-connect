@@ -12,8 +12,6 @@ import ServiceDetail from "./pages/ServiceDetail";
 import Confirmation from "./pages/Confirmation";
 import Auth from "./pages/Auth";
 import Subscription from "./pages/Subscription";
-import Login from "./pages/admin/Login";
-import Dashboard from "./pages/admin/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -31,8 +29,6 @@ const App = () => (
           <Route path="/register" element={<RegisterService />} />
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
